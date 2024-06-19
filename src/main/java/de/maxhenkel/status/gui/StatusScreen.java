@@ -17,8 +17,6 @@ public class StatusScreen extends StatusScreenBase {
     private static final ResourceLocation DND = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/dnd.png");
     private static final ResourceLocation OPEN = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/open.png");
     private static final ResourceLocation NEUTRAL = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/neutral.png");
-    private static final ResourceLocation RECORDING = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/recording.png");
-    private static final ResourceLocation STREAMING = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/streaming.png");
 
     public StatusScreen() {
         super(Component.translatable("gui.status.title"), 145, 184);
@@ -48,14 +46,6 @@ public class StatusScreen extends StatusScreenBase {
         StateButton neutral = new StateButton(x, y, width, height, Component.translatable("message.status.neutral"), "");
         addRenderableWidget(neutral);
         y += height + 1;
-
-        StateButton recording = new StateButton(x, y, width, height, Component.translatable("message.status.recording"), "recording");
-        addRenderableWidget(recording);
-        y += height + 1;
-
-        StateButton streaming = new StateButton(x, y, width, height, Component.translatable("message.status.streaming"), "streaming");
-        addRenderableWidget(streaming);
-        y += height + 5;
 
         BooleanButton noSleep = new BooleanButton(x, y, width, height, Component.translatable("message.status.no_sleep"), () -> StatusClient.STATE_MANAGER.getNoSleep(), () -> {
             StatusClient.STATE_MANAGER.setNoSleep(true);
@@ -95,12 +85,6 @@ public class StatusScreen extends StatusScreenBase {
         y += height + 5;
 
         renderIcon(guiGraphics, NEUTRAL, x, y + 2);
-        y += height + 1;
-
-        renderIcon(guiGraphics, RECORDING, x, y + 2);
-        y += height + 1;
-
-        renderIcon(guiGraphics, STREAMING, x, y + 2);
 
         int titleWidth = font.width(getTitle());
         guiGraphics.drawString(font, getTitle(), guiLeft + (xSize - titleWidth) / 2, guiTop + 7, FONT_COLOR, false);
