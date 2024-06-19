@@ -119,24 +119,7 @@ public class ClientPlayerStateManager {
     private static final ResourceLocation DND = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/dnd.png");
     private static final ResourceLocation OPEN = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/open.png");
     private static final ResourceLocation NO_AVAILABILITY = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/no_availability.png");
-    private static final ResourceLocation RECORDING = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/recording.png");
-    private static final ResourceLocation STREAMING = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/streaming.png");
     private static final ResourceLocation NEUTRAL = ResourceLocation.fromNamespaceAndPath(Status.MODID, "textures/icons/neutral.png");
-
-    @Nullable
-    public ResourceLocation getIcon(UUID player) {
-        PlayerState state = getState(player);
-        if (state == null) {
-            return null;
-        }
-        if (state.getState().equals("recording")) {
-            return RECORDING;
-        } else if (state.getState().equals("streaming")) {
-            return STREAMING;
-        } else {
-            return NEUTRAL;
-        }
-    }
 
     @Nullable
     public ResourceLocation getOverlay(UUID player) {
